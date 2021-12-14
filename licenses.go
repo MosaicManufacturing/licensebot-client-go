@@ -26,16 +26,13 @@ type LicenseWithoutText struct {
 
 func init() {
     // install go-licenses
-    if _, err := runCommand("go", "get", "-v", "github.com/google/go-licenses"); err != nil {
-        log.Fatalln(err)
-    }
-    if _, err := runCommand("go", "build", "github.com/google/go-licenses"); err != nil {
+    if _, err := runCommand("go", "install", "github.com/google/go-licenses"); err != nil {
         log.Fatalln(err)
     }
 }
 
 func getModuleLicenses(relativePath string) ([]LicenseWithoutText, error) {
-    stdout, err := runCommand("./go-licenses", "csv", relativePath)
+    stdout, err := runCommand("go-licenses", "csv", relativePath)
     if err != nil {
         return nil, err
     }
