@@ -26,7 +26,7 @@ type LicenseWithoutText struct {
 
 func init() {
     // install go-licenses
-    if _, err := runCommand("go", "install", "github.com/google/go-licenses"); err != nil {
+    if _, err := runCommand("go", "install", "github.com/google/go-licenses@latest"); err != nil {
         log.Fatalln(err)
     }
 }
