@@ -2,20 +2,16 @@ package main
 
 import (
     "fmt"
-    "io/ioutil"
-    "log"
     "strings"
 )
+
+// go:embed blacklist.txt
+var blacklistFileContent string
 
 var blacklist []string
 
 func init() {
-    // load blacklist contents
-    blacklistBytes, err := ioutil.ReadFile("./blacklist.txt")
-    if err != nil {
-        log.Fatalln(err)
-    }
-    blacklistLines := splitOnNewlines(string(blacklistBytes))
+    blacklistLines := splitOnNewlines(blacklistFileContent)
     for _, line := range blacklistLines {
         line = strings.TrimSpace(line)
         if len(line) == 0 {

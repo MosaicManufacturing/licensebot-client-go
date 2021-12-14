@@ -69,7 +69,7 @@ func getModuleLicenses(relativePath string) ([]LicenseWithoutText, error) {
 func getAllRepoModules() ([]License, error) {
     licensesMap := make(map[string]LicenseWithoutText)
 
-    moduleLicenses, err := getModuleLicenses("..")
+    moduleLicenses, err := getModuleLicenses(".")
     if err != nil {
         fmt.Println(err)
         return nil, err
